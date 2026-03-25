@@ -10,7 +10,8 @@ int main(){
         std::cout<<"3.Delete Student Details."<<std::endl;
         std::cout<<"4.Update Student Details."<<std::endl;
         std::cout<<"5.Search Student Details."<<std::endl;
-        std::cout<<"6.close the System."<<std::endl;
+        std::cout<<"6.Total Student Details."<<std::endl;
+        std::cout<<"7.Close the System."<<std::endl;
         std::cin>>input;
         switch(input){
             case 1:
@@ -34,6 +35,10 @@ int main(){
                 searchStudent();
                 break;
             case 6:
+                std::cout<<"Total Student in the class."<<std::endl;
+                totalStudents();
+                break;
+            case 7:
                 std::cout<<"Exit the menu."<<std::endl;
                 return 0;
             default:
