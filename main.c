@@ -5,7 +5,14 @@ int main(){
     int choice;
     AddressBook.count = 0;
     do{
-        printf("Enter the Choice:\n");
+        printf("***********AddressBook***********\n");
+        printf("1. Add Person Details in AddressBook.\n");
+        printf("2. Display Person Details in AddressBook.\n");
+        printf("3. Update Person Details in AddressBook.\n");
+        printf("4. Delete Person Details in AddressBook.\n");
+        printf("5. No of Students in AddressBook.\n");
+        printf("6. Student Information in AddessBook.\n\n");
+        printf("Enter the Choice: ");
         scanf("%d",&choice);
         switch(choice){
             case 1:
@@ -34,7 +41,7 @@ int main(){
 }
 void Add_Person_Details(){
     if(AddressBook.count == MAX_PERSON){
-        printf("AddressBook is FULL.\n");
+        printf("AddressBook is FULL.\n\n");
     }
     printf("Add_Person_Details.\n\n");
     printf("Enter Name: ");
@@ -47,7 +54,7 @@ void Add_Person_Details(){
 }
 void Display_Person_Details(){
     if(AddressBook.count == 0){
-        printf("AddressBook is Empty.\n");
+        printf("AddressBook is Empty.\n\n");
     }
     for(int i =0; i<AddressBook.count;i++){
         printf("Details of %s:\n\n",AddressBook.Info[i].name);
@@ -59,7 +66,7 @@ void Display_Person_Details(){
 void Update_Person_Details(){
     char Search_Name[50];
     int Found_Person;
-    printf("Enter Person name to Update in AddressBook:\n");
+    printf("Enter Person name to Update in AddressBook: ");
     scanf(" %49[^\n]",Search_Name);
     for(int i =0;i<AddressBook.count;i++){
         Found_Person =0;
@@ -77,13 +84,13 @@ void Update_Person_Details(){
         }
     }
     if(Found_Person ==0){
-        printf("Person Details Not Available in AddressBook\n");
+        printf("Person Details Not Available in AddressBook\n\n");
     }
 }
 void Delete_Person_Details(){
     char Search_Name[50];
     int Delete_Person;
-    printf("Enter Person name to Delete From AddressBook:\n");
+    printf("Enter Person name to Delete From AddressBook: ");
     scanf(" %49[^\n]",Search_Name);
     for(int i =0;i<AddressBook.count;i++){
         Delete_Person =0;
@@ -99,16 +106,16 @@ void Delete_Person_Details(){
         }
     }
     if(Delete_Person == 0){
-        printf("Person Details Not Available in AddressBook\n");
+        printf("Person Details Not Available in AddressBook\n\n");
     }
 }
 void No_Students(){
-    printf("Number of Student Available in AddressBook:%d \n",AddressBook.count);
+    printf("Number of Student Available in AddressBook:%d \n\n",AddressBook.count);
 }
 void Info_Student(){
     char Search_Name[50];
     int Info_Person = 0;
-    printf("Enter Person Name to Verify Details From AddressBook:\n");
+    printf("Enter Person Name to Verify Details From AddressBook: ");
     scanf(" %49[^\n]",Search_Name);
     for(int i =0;i<AddressBook.count;i++){
         if(strcmp(AddressBook.Info[i].name,Search_Name)==0){
@@ -122,6 +129,6 @@ void Info_Student(){
         }
     }
     if(Info_Person ==0){
-        printf("Person Name is Not Present in the Address Book.\n");
+        printf("Person Name is Not Present in the Address Book.\n\n");
     }
 }

@@ -20,3 +20,9 @@ This is AddressBook Application Written in **C Language**.
 3. Inside WSL Terminal, Compile Project
 4. gcc ./main.c
 4. ./a.out
+
+## Feature Enhahncements
+1. Save Data into a File[Text, Binary Format]
+2. Input Validation[Phone Number,Email]
+3. Loading Data Automatically When Program Starts.
+4. Improves Search Functionality[Search Based on Multiple Fields].
