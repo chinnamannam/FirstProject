@@ -22,7 +22,7 @@ This is AddressBook Application Written in **C Language**.
 4. ./a.out
 
 ## Feature Enhahncements
-1. Save Data into a File[Text, Binary Format]
-2. Input Validation[Phone Number,Email]
+1. Save Data into a File[Regular Format, Binary Format]
+2. Input Validation[Email]
 3. Loading Data Automatically When Program Starts.
 4. Improves Search Functionality[Search Based on Multiple Fields].

@@ -1,0 +1,12 @@
+Name: Chinna Somaiah M
+Phonenumber: 987456123
+Gmailid: abc@gmail.com
+
+Name: Aadithya
+Phonenumber: 0123456789
+Gmailid: abc@gmail.com
+
+Name: Sailaja
+Phonenumber: 1234567
+Gmailid: abc@gmail.com
+
