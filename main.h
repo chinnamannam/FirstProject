@@ -19,7 +19,7 @@ void No_Students();
 void Info_Student();
 int Validate_Name(const char *name);
 int Validate_Phone_Number(const char *phonenumber);
-//int Validate_Gmail_ID(const char *GmailID);
+int Validate_Gmail_ID(const char *GmailID);
 void Save_Person_Data_to_File(const char *name,const char *phonenumber, const char *gmailid,const char *Mode);
 void Load_Person_Data_From_File();
 void Sync_File_Adressbook();

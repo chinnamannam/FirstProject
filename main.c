@@ -34,6 +34,9 @@ int main(){
             case 6:
             Info_Student();
             break;
+            case 0: 
+            printf("Exiting program...\n");
+            break;
             default:
             printf("Invalid input.\n");
         }
@@ -58,8 +61,10 @@ void Add_Person_Details(){
         scanf(" %19[^\n]",AddressBook.Info[AddressBook.count].phonenumber);
     }while(!(Validate_Phone_Number(AddressBook.Info[AddressBook.count].phonenumber)));
 
+    do{
     printf("Enter GmailID: ");
     scanf(" %49[^\n]",AddressBook.Info[AddressBook.count].gmailid);
+    }while(!(Validate_Gmail_ID(AddressBook.Info[AddressBook.count].gmailid)));
 
     /*
     ***************Save  Person Details into a file**********************************
@@ -68,7 +73,7 @@ void Add_Person_Details(){
     2. "w"=> it will create new file if doen't exist and erase all the content
     */
     char choice;
-    printf("Perform Append[a] or Writing[w] into a file?");
+    printf("Perform Append[a] or Writing[w] into a file? ");
     
     scanf(" %c",&choice);
 
@@ -106,12 +111,22 @@ void Update_Person_Details(){
     for(int i =0;i<AddressBook.count;i++){
         if(strcmp(AddressBook.Info[i].name,Search_Name)==0){
             printf("Person Details Found.\n");
+
+            do{
             printf("Please Enter New Name: ");
             scanf(" %49[^\n]",AddressBook.Info[i].name);
+            }while(!(Validate_Name(AddressBook.Info[i].name)));
+            
+            do{
             printf("Please Enter New PhoneNumber: ");
             scanf(" %19[^\n]",AddressBook.Info[i].phonenumber);
+            }while(!(Validate_Phone_Number(AddressBook.Info[i].phonenumber)));
+
+            do{
             printf("Please Enter New GmailID: ");
             scanf(" %49[^\n]",AddressBook.Info[i].gmailid);
+            }while(!(Validate_Gmail_ID(AddressBook.Info[i].gmailid)));
+
             printf("New Details Updated Successfully.\n");
             Found_Person =1;
             Sync_File_Adressbook();
@@ -181,7 +196,7 @@ int Validate_Name(const char *name){
             if(!(((name[i]>='a') && (name[i]<='z'))||
             ((name[i]>='A')&&(name[i]<='Z'))||
             (name[i] ==' ')||(name[i]=='-')||(name[i] == '\''))){
-                printf("It is Not Valid Character %c in name:\n ",name[i]);
+                printf("Invalid Character %c in name:\n ",name[i]);
                 return 0;
             }
     }
@@ -222,8 +237,10 @@ Atleast one dot(.)should appear After @
 Domain Validation -> @gmail.com
 Allowed Letters, Digits, Underscore(_),Dot(.),hyphen(-),and Single @
 */
-/*
+
 int Validate_Gmail_ID(const char *GmailID){
+    int at = 0, dot = 0;
+    int at_pos = -1, dot_pos = -1;
     if(strlen(GmailID) == 0){
         printf("GmailID should not be Empty.\n");
         return 0;
@@ -238,15 +255,44 @@ int Validate_Gmail_ID(const char *GmailID){
                 printf("It is Not Valid Character %c in GmailID:\n ",GmailID[i]);
                 return 0;
         }
-        //Extactly one @ Should not be Start or End Position
         
-        
-        //Atleast one dot(.)should appear After @
-        
-        // Strict Gmail Domain CHeck
+        // Counting @ and . 
+        if(GmailID[i] == '@') {
+            at++;
+            at_pos = i;
+        }
+        if(GmailID[i] == '.'){
+            dot++;
+            dot_pos = i;
+        }       
     }
+
+    // Exactly one '@' and at least one '.'
+    if (at != 1 || dot == 0){
+            printf("Invalid email format.\n");
+            return 0;
+    }
+
+    //Extactly one @ Should be there and it Should not be Start or End.
+    if ((at_pos== 0)||(GmailID[at_pos+1] == '\0')){
+            printf("Invalid emailID:'@' is in Wrong Position.\n");
+            return 0;
+    }
+
+    // Atleast one . should be there after @ and it should not be in End.
+    if ((dot_pos < at_pos)||(GmailID[dot_pos+1] == '\0')){
+            printf("Invalid emailID:'.' is in Wrong Position.\n");
+            return 0;
+    }
+
+    // Must End With @gmail.com
+    if((strlen(GmailID)<10)||strcmp(GmailID+strlen(GmailID)-10,"@gmail.com") != 0){
+        printf("GmailID must end with '@gmail.com'.\n");
+        return 0;
+    }
+    return 1;
 }
-*/
+
 /* Save Person Details into File*/
 void Save_Person_Data_to_File(const char *name, 
                             const char *phonenumber, 
@@ -284,7 +330,7 @@ void Load_Person_Data_From_File(){
                             printf("AddressBook is FULL.\n\n");
                             break;
                         }
-              }
+            }
 }
 void Sync_File_Adressbook(){
     FILE *fp;
