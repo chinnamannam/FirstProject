@@ -1,5 +1,5 @@
 #include<iostream>
 int main(){
-    std::cout<<"My First Program in Github"<<std::endl;
+    std::cout<<"First Program in CPP"<<std::endl;
     return 0;
 }
