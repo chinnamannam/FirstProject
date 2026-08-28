@@ -3,6 +3,7 @@
 
 #define READ_MODE "rb"
 #define WRITE_MODE "wb"
+#define MAX_FILE_SUFFIX 10
 
 typedef enum{
     STG_Encode,
